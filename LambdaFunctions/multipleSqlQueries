@@ -1,0 +1,9 @@
+The function takes the following inputs
+  "conn": Connection string to your database
+  "sql": An array of sql query strings you want to run
+  
+The function uses pg to connect to a postgreSQL instance. It can be used to connect to a Redshift cluster. Pg is included in the zip file.
+If you want to connect to an RDS instance or a Redshift cluster in a VPC your function must be in the same VPC, and use same subnets an a security group than your instance.
+
+Function creates a promise from each sql query. The promise runs the query and resolves with query results.
+After the promises are resolved the function closes the connection and calls back with the results.
