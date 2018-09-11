@@ -10,7 +10,7 @@ exports.handler = (event, context, callback) => {
     var subnets=cidr.cidr.subnets(event.cidr,28,16);
     
     //Function to set a default tag to a given resource
-    var setTags=function(resource){
+    const setTags=(resource)=>{
         var params = {
             Resources: [resource],
                 Tags: [
