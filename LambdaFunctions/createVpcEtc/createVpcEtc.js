@@ -147,7 +147,6 @@ exports.handler = (event, context, callback) => {
                   VpcId: resource.vpc,
                   AvailabilityZone: region+'a'
                  };
-                 console.log('Parameters declared');
                  ec2.createSubnet(params, function(err, data) {
                    if (err) {
                         reject(err);
@@ -167,7 +166,6 @@ exports.handler = (event, context, callback) => {
                   VpcId: resource.vpc,
                   AvailabilityZone: region+'b'
                  };
-                 console.log('Parameters declared');
                  ec2.createSubnet(params, function(err, data) {
                    if (err){
                         reject(err);
@@ -215,7 +213,7 @@ exports.handler = (event, context, callback) => {
     			}
     			
     			Promise.all([promises]).then(function(allData){
-                    callback(null,[resource]);
+                    callback(null,resource);
     			}).catch(function(error) {
                     callback(error);
                 });
