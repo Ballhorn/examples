@@ -1,0 +1,10 @@
+The function takes the following inputs
+  cidr: A Cidr block in string format
+  tag: A tag string that's added on created resources
+  
+The function creates the following resources
+  A VPC on the given cidr block with dns hostnames and dns support enabled
+  An internet gateway that is attached to the VPC
+  Two subnets in availability zones a and b. You can modify the subnet properties in line 10.
+  A route table that is associated with the subnets.
+  A security group with a basic rule that allows all traffic within the security group.
