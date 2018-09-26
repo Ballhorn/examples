@@ -1,0 +1,15 @@
+The function takes the following input
+  domain: The domain (e.g. example.com) to which the API domain name will be added. The domain must be available in a Route 53 hosted zone
+  alias: An alias for the API domain name. The API domain name will be in form alias.example.com
+  hostedZone: The id of the hosted zone of the domain
+  certificate: Arn of a SSL certificate assigned to the domain in AWS certificate manager. The certificate must be located in us-east-1 region.
+  stageName: The of the deployment stage you want your API to be created in.
+  kinesisRole: Arn of IAM role that is used by Kinesis Firehose to stream data
+ 
+ The function creates API gateway resource with a dynamic POST method. The method forwards data in the request to Kinesis Firehose stream defined
+ in the domain name. The API domain name is associated with SSL certificate, and added to Route 53 hosted zone as a CNAME record set. An api key
+ is created and associated with the deployment stage of the API by using a usage plan.
+ 
+ The API domain name to be used in a POST request is [alias].[domain]/[firehose-stream-name].
+ 
+ The output callback includes ids of the resources created.
